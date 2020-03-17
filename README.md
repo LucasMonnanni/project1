@@ -1,2 +1,3 @@
-# project1
-Python, Flask, SQL and APIs
+# Project 1
+
+Web Programming with Python and JavaScript
