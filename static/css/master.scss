@@ -1,0 +1,56 @@
+.nav-link   {
+    color: black;
+}
+#welcome::after {@media  (min-width: 600px) {
+    content:' Books!'
+}}
+
+// $navheight:4em;
+// @media (max-width:600px)    {$navheight:6em}
+// $navcolor: rgb(158, 235, 147);
+//
+// *   {
+//     font-family: helvetica arial sans-serif;
+//     a   {text-decoration: none;
+//     }
+// }
+// header  {
+//     margin:0;
+// }
+// .container {
+//     height: $navheight;
+//     width:100%;
+//     margin:0;
+//     padding: 0;
+//     background: linear-gradient(#505050, #c0c0c0);
+//     border-bottom: 2px solid black;
+//     @media (max-width:600px)    {
+//         height:6em;
+//     }
+//     nav {
+//         float:right;
+//         margin: 1.5em 0 0 0;
+//         @media (max-width: 600px)    {
+//             display: block;
+//             margin-top: 0;
+//         }
+//     }
+//     img {
+//         height:$navheight;
+//         float:left;
+//         @media (max-width:600px)    {
+//             height:6em;
+//         }
+//     }
+//     li  {
+//         list-style-type: none;
+//         display: inline;
+//         @media (max-width: 600px)    {
+//             display: block;
+//         }
+//     }
+//     a   {
+//         color:black;
+//         margin: 1.5em;
+//     }
+// }

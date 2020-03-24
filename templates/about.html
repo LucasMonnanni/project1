@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" href="{{ url_for('about')}}">About</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('signin')}}">Sign In</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('register')}}">Register!</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="container-sm my-lg-4 my-md-3">
+    <div class="row justify-content-center text-justify border border-success py-lg-4 py-md-2 px-2" style='background-color:rgba(255,255,255,0.1)'>
+            <h1>About this site</h1>
+            <p >This site was built as an excercise, there isn't really that much to it. I'm just a guy trying to learn to build a website, but I sure am glad you're here. Bye!</p>
+    </div>
+</div>
+{% endblock %}

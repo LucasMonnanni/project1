@@ -1,0 +1,11 @@
+.nav-link {
+  color: black;
+}
+
+@media (min-width: 600px) {
+  #welcome::after {
+    content: " Books!";
+  }
+}
+
+/*# sourceMappingURL=master.css.map */

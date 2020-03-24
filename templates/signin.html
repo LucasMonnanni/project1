@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Lucas's Books
+{% endblock %}
+<li class="nav-item">
+  <a class="nav-link active" href="{{ url_for('index')}}">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('about')}}">About</a>
+</li>
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+<form method="POST" action='{{url_for('main')}}'>
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+          </div>
+          <input type="text" class="form-control" id="inlineFormInputGroup" name="username" placeholder="Username">
+        </div>
+        </div>
+        <div class="col-auto">
+          <label class="sr-only" for="inlineFormInput">Name</label>
+          <input type="password" class="form-control mb-2" id="inlineFormInput" name="password" placeholder="Password">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-2">Sign in</button>
+        </div>
+    </div>
+</form>
+<p>{{ error }}
+    {% if error != Null %}
+        <a class="nav-link" href="{{url_for('register')}}">Register Instead</a>
+    {% endif %}
+</p>
+{% endblock %}
