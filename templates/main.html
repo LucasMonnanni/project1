@@ -18,7 +18,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{url_for('profile')}}">Profile</a>
           <a class="dropdown-item" href="{{url_for('library')}}">My Library</a>
-          <a class="dropdown-item" href="{{url_for('library')}}">My Reviews</a>
+          <a class="dropdown-item" href="{{url_for('reviews')}}">My Reviews</a>
         </div>
       </li>
   <a class="nav-link" href="{{ url_for('index')}}">Logout</a>
@@ -27,9 +27,28 @@
 
 {% block body %}
 <div class="container-sm my-lg-4 my-md-3">
-    <div class="row justify-content-center text-justify border border-success py-lg-4 py-md-2 px-2" style='background-color:rgba(255,255,255,0.1)'>
+    <div class="row justify-content-center text-justify border border-success py-lg-4 py-md-2 px-2">
             <h3">Welcome {{username}}</h3>
     </div>
+    <div class="row justify-content-center text-justify border border-success py-lg-4 py-md-2 px-2">
+            <h4">Latest reviews:</h4>
+            <p></p>
+            {% for review in reviews %}
+                <div class="card" style="width: 30rem; margin:30px">
+                    <img src="{{url_for('static', filename='user.png')}}" height=2rem alt=""><h5 class="card-header"> {{review[0]}}</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">{{review[2]}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{review[1]}}</h6>
+                        <h5 class="card-score">{{review[3]}}</h5>
+                        {% if review[4] != None %}
+                        <p class="card-text">{{review[4]}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+
+
 </div>
 <div class="container">
 </div>

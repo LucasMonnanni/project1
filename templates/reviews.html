@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Reviews
+{% endblock %}
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link active" href="{{ url_for('main')}}">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="{{ url_for('about')}}">About</a>
+</li>
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{username.capitalize()}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{url_for('profile')}}">Profile</a>
+          <a class="dropdown-item" href="{{url_for('library')}}">My Library</a>
+          <a class="dropdown-item" href="{{url_for('reviews')}}">My Reviews</a>
+        </div>
+      </li>
+  <a class="nav-link" href="{{ url_for('index')}}">Logout</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="row justify-content-center text-justify border border-success py-lg-4 py-md-2 px-2">
+        <h4">Latest reviews:</h4>
+        <p></p>
+        {% for review in reviews %}
+            <div class="card" style="width: 30rem; margin:30px">
+                <img src="{{url_for('static', filename='user.png')}}" height=2rem alt=""><h5 class="card-header"> {{review[0]}}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{review[2]}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{review[1]}}</h6>
+                    <h5 class="card-score">{{review[3]}}</h5>
+                    {% if review[4] != None %}
+                    <p class="card-text">{{review[4]}}</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+</div>
+{% endblock %}

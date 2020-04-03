@@ -29,8 +29,9 @@ def main():
 
     username = flask.request.form.get('username')
     password = flask.request.form.get('password')
-    if db.execute("SELECT id FROM users WHERE username = :username AND password = :password", {"username":username, "password":password}).rowcount != 0 :
-        return flask.render_template('main.html', username=username)
+    if db.execute("SELECT id FROM users WHERE username = :username AND password = :password;", {"username":username, "password":password}).rowcount != 0 :
+        reviews = db.execute("SELECT username, author, title, score, review FROM reviews r INNER JOIN books b ON book_id=b.id INNER JOIN users u ON user_id=u.id ORDER BY r.id DESC LIMIT 10;")
+        return flask.render_template('main.html', username = username, latest_reviews = reviews)
     else:
         return flask.render_template('signin.html', error="Wrong username or password.")
 
@@ -66,4 +67,13 @@ def profile():
 def library():
     pass
 
-    
+@app.route("/reviews/", methods=['POST'])
+def reviews():
+    if mode=='mine':
+        reviews = db.execute("SELECT username, author, title, score, review FROM reviews r \
+        INNER JOIN books b ON book_id=b.id INNER JOIN users u ON user_id=u.id ORDER BY r.id DESC")
+        return flask.render_template('main.html', username = username, reviews = reviews)
+    else:
+        reviews = db.execute("SELECT username, author, title, score, review FROM reviews r \
+        INNER JOIN books b ON book_id=b.id INNER JOIN users u ON user_id=u.id ORDER BY r.id DESC WHERE username = :username", {"username":username})
+        return flask.render_template('main.html', username = username, reviews = reviews)
